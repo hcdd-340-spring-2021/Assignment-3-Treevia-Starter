@@ -22,6 +22,7 @@ const retrieveDataFromAPI = async (endpointurl) => {
 
       // if the image url does not ends with .jpg, then append the file extension
       const image_url = plant.image_url.endsWith('.jpg') ? plant.image_url : plant.image_url + '.jpg'
+      const http_image_url = image_url.replace(/^https:\/\//i, 'http://')
 
       const plantobject = {
         scientific_name: plant.scientific_name,
@@ -30,6 +31,7 @@ const retrieveDataFromAPI = async (endpointurl) => {
         genus: plant.genus,
         key: plant.slug,
         image_url: image_url,
+        http_image_url: http_image_url,
         url: image_url,
       }
       result.push(plantobject);
